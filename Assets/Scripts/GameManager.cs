@@ -7,7 +7,7 @@ using Mirror;
 public class GameManager : MonoBehaviour
 {
     public static GameManager main;
-    public Vector3[] pos;
+    public Transform[] pos;
     public int WinScore = 3, RestartTime = 5;
 
     private void Awake()
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (Player player in PlayerManager.Main.players)
         {
-            player.Spawn(pos[Random.Range(0, pos.Length)]);
+            player.Spawn(pos[Random.Range(0, pos.Length)].position);
         }
     }
 
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (Player player in PlayerManager.Main.players)
         {
-            player.playerState.RpcTransp(pos[Random.Range(0, pos.Length)]);
+            player.playerState.RpcTransp(pos[Random.Range(0, pos.Length)].position);
             player.RpcSetScore(0);
         }
     }
